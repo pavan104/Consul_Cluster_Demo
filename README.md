@@ -3,8 +3,10 @@ Consul Cluster Build Demo
 
 <pre><code>#Cluster Structure
 --------------------------------
-Consul Master/Bootstrap Server : Build 5 aws ec2 instances and tag them with "Consul-Master-1"
-Consul Client/Agent Server : Build 5 aws ec2 instances and tag them with "Consul-Client-1"
+Consul Master/Bootstrap Server : Build 5 public aws ec2 instances and tag them with "Consul-Master-1"
+Consul Client/Agent Server : Build 5 public aws ec2 instances and tag them with "Consul-Client-1"
+
+Also make sure inbound and outbound rules is open for all traffic.
 </code></pre>
 
 <pre><code>#Run these on all consul servers
@@ -22,16 +24,19 @@ git clone https://github.com/pavan104/Consul_Cluster_Demo.git
 </code></pre>
 
 <pre><code># Consul Encryption key and Basic setup
----------------------------
+--------------------------------
 ENCRYPT_KEY=`consul keygen`
+# Save this keygen! Note, if your key has a slash in it you need to escape them for setup.sh. Or just regenerate one until it doesn't have a slash :)
+#Please use this key for each master and client setup, we dont need to create key for each client and master. This is one time task.
+--------------------------------
 cd /home/ec2-user/Consul_Cluster_Demo/
 ./setup.sh <node_name> <encrypt> <private ip master 1> <private ip master 2> <private ip master 3> <private ip master 4> <private ip master 5>
 
-For eg.
-Run on each Master Server by changing node_name :
+#For eg.
+#Run on each Master Server by changing node_name :
 ./setup.sh Consul-Master-1 $ENCRYPT_KEY 172.31.21.159 172.31.4.234 172.31.5.212 172.31.28.209 172.31.24.179
 
-Run on each Client Server by changing node_name :
+#Run on each Client Server by changing node_name :
 ./setup.sh Consul-Client-1 $ENCRYPT_KEY 172.31.21.159 172.31.4.234 172.31.5.212 172.31.28.209 172.31.24.179
 </code></pre>
 
