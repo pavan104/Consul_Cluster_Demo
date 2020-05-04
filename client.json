@@ -1,0 +1,11 @@
+{
+    "server" : false,
+    "datacenter" : "aws",
+    "data_dir" : "/consul/data",
+    "encrypt" : "__ENCRYPT__",
+    "log_level" : "INFO",
+    "bind_addr" : "__PRIVATE_IP__",
+    "enable_syslog" : true,
+    "node_name": "__NODE_NAME__",
+    "retry_join" : ["__PRIVATE_IP_1__", "__PRIVATE_IP_2__", "__PRIVATE_IP_3__", "__PRIVATE_IP_4__", "__PRIVATE_IP_5__"]
+}
