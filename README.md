@@ -59,3 +59,9 @@ cd /consul/config
 cp /home/ec2-user/Consul_Cluster_Demo/client.json config.json
 consul agent -config-dir /consul/config/config.json >> /consul/logs/consul_client.log &
 </code></pre>
+
+<pre><code># Consul - Quick Links
+• Introduction to HashiCorp Consul - https://www.youtube.com/watch?v=mxeMdl0KvBI
+• Consul Download - https://releases.hashicorp.com/consul/
+• Consul Configuration Parameters - https://www.consul.io/docs/agent/options.html
+</code></pre>
