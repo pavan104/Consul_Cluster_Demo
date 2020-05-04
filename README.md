@@ -30,7 +30,7 @@ ENCRYPT_KEY=`consul keygen`
 # Please use this key for each master and client setup, we dont need to create key for each client and master. This is one time task.
 --------------------------------
 cd /home/ec2-user/Consul_Cluster_Demo/
-./setup.sh <node_name> <encrypt> <private ip master 1> <private ip master 2> <private ip master 3> <private ip master 4> <private ip master 5>
+./setup.sh node_name encrypt_key private_ip_master_1 private_ip_master_2 private_ip_master_3 private_ip_master_4 private_ip_master_5
 
 # For eg.
 # Run on each Master Server by changing node_name :
