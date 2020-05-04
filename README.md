@@ -23,6 +23,7 @@ wget https://github.com/jippi/hashi-ui/releases/download/v1.3.8/hashi-ui-linux-a
 sudo mv consul /usr/local/bin/
 sudo mv hashi-ui-linux-amd64 /usr/local/bin/
 git clone https://github.com/pavan104/Consul_Cluster_Demo.git
+chmod -R 755 /home/ec2-user/Consul_Cluster_Demo
 </code></pre>
 
 <pre><code># Consul - Encryption key and Basic setup
@@ -44,24 +45,24 @@ cd /home/ec2-user/Consul_Cluster_Demo/
 
 <pre><code># Consul - Master/Bootstrap Server
 --------------------------------
-mkdir -m 755 /consul/config
-mkdir -m 755 /consul/data
-mkdir -m 755 /consul/logs
+sudo mkdir -m 755 /consul/config
+sudo mkdir -m 755 /consul/data
+sudo mkdir -m 755 /consul/logs
 cd /consul/config
-cp /home/ec2-user/Consul_Cluster_Demo/server.json config.json
-consul agent -config-dir /consul/config/config.json >> /consul/logs/consul_master.log &
-hashi-ui-linux-amd64 --consul-enable >> /consul/logs/consul_ui.log &
+sudo cp -rp /home/ec2-user/Consul_Cluster_Demo/server.json config.json
+sudo consul agent -config-dir /consul/config/config.json >> /consul/logs/consul_master.log &
+sudo hashi-ui-linux-amd64 --consul-enable >> /consul/logs/consul_ui.log &
 </code></pre>
 
 <pre></code># Consul - Client/Agent Server
 --------------------------------
-mkdir -m 755 /consul/config
-mkdir -m 755 /consul/data
-mkdir -m 755 /consul/logs
+sudo mkdir -m 755 /consul/config
+sudo mkdir -m 755 /consul/data
+sudo mkdir -m 755 /consul/logs
 cd /consul/config
-cp /home/ec2-user/Consul_Cluster_Demo/client.json config.json
-consul agent -config-dir /consul/config/config.json >> /consul/logs/consul_client.log &
-hashi-ui-linux-amd64 --consul-enable >> /consul/logs/consul_ui.log &
+sudo cp -rp /home/ec2-user/Consul_Cluster_Demo/client.json config.json
+sudo consul agent -config-dir /consul/config/config.json >> /consul/logs/consul_client.log &
+sudo hashi-ui-linux-amd64 --consul-enable >> /consul/logs/consul_ui.log &
 </code></pre>
 
 <pre><code># Consul - Quick Links
